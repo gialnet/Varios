@@ -1,0 +1,42 @@
+Este documento describe el uso de estos scripts
+
+01_clonar_versionLGS.sh
+
+02_SetValoresEsquema.sh
+
+Se utilizan para copiar un esquema de usuario de Oracle que nos sirve de plantilla para crear nuevos clientes del tipo Registro Fehaciente v.1
+
+Ejemplo de uso:
+
+./01_clonar_versionLGS.sh NuevoCliente
+
+./02_SetValoresEsquema.sh NuevoCliente
+
+Tareas que realiza.
+
+Exportación de la versión origen
+
+# Exporta la última versión de desarrollo, primero comprueba que exista una disponible ya en el disco duro
+# en la carpeta 'copias' /home/oracle/datapum/lgs_dumpv1.dmp
+
+# Importa a un nuevo esquema de usuario previamente creado 
+
+# Antonio Pérez
+
+# 19 ENERO 2012 ver 1.0
+
+# invocar con ./01_clonar_versionLGS.sh medicos_huelva
+
+# necesita que el usuario system pueda acceder al oracle directory COPIAS
+
+# Este es el primer script con el que comienza la secuencia de crear un nuevo cliente
+# despues va el script ./02_SetValoresEsquema.sh NuevoCliente
+
+En la carpeta plantillas se encuentran los archivos PLSQL que sirven de patrón, basta con solo editar estos archivos para recrear los ajuste de un esquema a sus valores por defecto para un determinado usuario.
+
+Con esta consulta podemos ver una lista de usuarios con la suma de los objetos de cada una se utiliza para una comprobación de que conciden el numero de objetos del origen con el de destino.
+
+select owner, count(owner) Numero 
+  from dba_objects 
+  group by owner 
+  order by owner

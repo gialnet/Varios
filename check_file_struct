@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+if [ -d /u01/app/oracle ];
+then
+   echo "Directorio existe"
+else
+   echo "No existe debe crearlo"
+fi
+
+# buscar directorios vacios
+find -depth -type d -empty
+
+/*
+
+Shell Built in Variables	Meaning
+$#	Number of command line arguments. Useful to test no. of command line args in shell script.
+$*	All arguments to shell
+$@	Same as above
+$-	Option supplied to shell
+$$	PID of shell
+$!	PID of last started background process (started with &)
+
+echo $? tendrá valor cero si el último comando se ejecuto correctamente y un valor si hubo algún error
+
+rm myf && echo "File is removed successfully" || echo "File is not removed" 
+
+*/
+
+/*
+
+ dialog --title {title} --backtitle {backtitle} {Box options}
+        where Box options can be any one of following
+        --yesno      {text}  {height} {width}
+        --msgbox     {text}  {height} {width}
+        --infobox    {text}  {height} {width}
+        --inputbox   {text}  {height} {width} [{init}]
+        --textbox    {file}  {height} {width}
+        --menu       {text}  {height} {width} {menu} {height} {tag1} item1}...
+
+*/
